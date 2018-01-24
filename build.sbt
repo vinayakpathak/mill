@@ -151,7 +151,10 @@ lazy val scalalib = project
     pluginSettings,
     name := "mill-scalalib",
     fork := true,
-    baseDirectory in Test := (baseDirectory in Test).value / ".."
+    baseDirectory in Test := (baseDirectory in Test).value / "..",
+    libraryDependencies ++= Seq(
+      "org.scala-sbt" % "test-interface" % "1.0"
+    )
   )
 
 lazy val scalaworker: Project = project
@@ -162,8 +165,7 @@ lazy val scalaworker: Project = project
     name := "mill-scalaworker",
     fork := true,
     libraryDependencies ++= Seq(
-      "org.scala-sbt" %% "zinc" % "1.0.5",
-      "org.scala-sbt" % "test-interface" % "1.0"
+      "org.scala-sbt" %% "zinc" % "1.0.5"
     )
   )
 
